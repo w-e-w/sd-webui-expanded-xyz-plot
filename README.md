@@ -1,2 +1,2 @@
 # sd-webui-expanded-x-y-plot
-Description here
+Updated version of [yspacedevyspacedev Expanded-XY-grid](https://github.com/yspacedev/Expanded-XY-grid).
