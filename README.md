@@ -1,7 +1,10 @@
-# sd-webui-expanded-xyz-plot
+### sd-webui-expanded-xyz-plot
 Updated version of [yspacedevyspacedev Expanded-XY-grid](https://github.com/yspacedev/Expanded-XY-grid). Custom script for AUTOMATIC1111's stable-diffusion-webui that adds more features to the standard xyz grid.
 
-## Features added:
+### Installation of this extension
+Go to the Extensions tab in the webui. In the Install from url paste `https://github.com/GiusTex/sd-webui-expanded-x-y-plot`. Press Install, then close webui terminal and restart it.
+
+### Features added:
 - Multitool
 
 - Customizable prompt matrix
@@ -12,7 +15,7 @@ Updated version of [yspacedevyspacedev Expanded-XY-grid](https://github.com/yspa
 
 - Add PNGinfo to grid image
 
-## More info
+### More info
 The code may be very confusing and cluttered because I am not a professional programmer. You are free to add a pull request to this repository to clean up my code, add a feature, or squash some bugs. For now, I've tested it enough to say it works in most cases, but if you encounter a case where it errors out or doesn't work properly, put it in the discussions.
 
 This script is very heavily based (I just modified the code) on the original xy_grid.py created by AUTOMATIC1111 for stable-diffusion-webui, so it includes all the same features. And thank you AUTOMATIC1111 and all other contributors for the original script.
@@ -20,12 +23,12 @@ This script is very heavily based (I just modified the code) on the original xy_
 I'm calling this an Alpha release because it is by no means complete or bug free, and definitely has some things left over from development.
 
 
-# Feature usage:
-## Multitool:
+### Feature usage:
+#### Multitool:
 The Multitool allows you to adjust multiple parameters in one axis. This allows for theoretically unlimited parameters to be adjusted in one xy grid.
 You can now have a CFG scale and steps plot that also compares checkpoint name.
 
-### Format:
+#### Format:
 <Exact name of field (not case sensitive)>: parameter1, parameter2... | <Exact name of field (not case sensitive)>: parameter1, parameter2... | ...
 
 For example: "Steps: 20, 50 | CFG scale: 7, 10" will create an axis with all possible combinations of those values (Steps: 20 | CFG scale: 7; Steps: 20 | CFG scale: 10; Steps: 50 | CFG scale: 7; Steps: 50 | CFG scale: 10)
@@ -36,7 +39,7 @@ For example: "Steps: 20-40 (+10) | CFG scale: 7, 10" will create an axis with al
 
 It also works with text parameters with fields like S/R. For example, "Prompt S/R: a bicycle, a skateboard, a motorcycle | Steps: 20, 50"
 
-## Prompt S/R placeholder:
+#### Prompt S/R placeholder:
 This very small feature allows you to replace a placeholder value (the first value in the list of parameters) with desired values. 
 
 Example: Prompt: darth vader riding a bicycle, modifier
@@ -47,17 +50,17 @@ The original Prompt S/R would create the prompts [darth vader riding a bicycle, 
 
 Prompt S/R Placeholder will create the prompts [darth vader riding a bicycle, ; darth vader riding a bicycle, 4k; darth vader riding a bicycle, 8k] along that axis
 
-## Prompt matrix:
+#### Prompt matrix:
 This feature functions like S/R placeholder, except it replaces the placeholder value with different combinations of other parameters.
 
 For example: modifier, highly detailed, 4k will replace ALL occurrences of the word "modifier" in the prompt and negative prompt with a combination of "highly detailed" and "4k" (4k; highly detailed; 4k, highly detailed).
 
 There is a minor "bug" where if you use Prompt Matrix in both x and y, and the placeholder words share the same order of characters, the parser will throw an error. (Example: on x: modifier, 4k, 8k; on y: modifier2, realistic, photo) This is because Python replaces all instances of a word like "modifier" with the desired words, and it ends up also replacing the other axis's placeholder word, for example "modifier2". A solution to this is to use "modifier1" as the placeholder value for one axis, and "modifier2" as the placeholder for the other axis.
 
-## Example usage:
+#### Example usage:
 ![Screenshot 2022-11-16 211052](https://user-images.githubusercontent.com/80003301/202345637-a48d8e28-6bd7-4d3e-9539-94d41b4c6d50.png)
 
-# Example images:
+### Example images:
 Prompt: "darth vader riding a bicycle, modifier"; <br>
 X: Multitool: "Prompt S/R: bicycle, motorcycle | CFG scale: 7.5, 10 | Prompt S/R Placeholder: modifier, 4k, artstation"; <br>
 Y: Multitool: "Sampler: Euler, Euler a | Steps: 20, 50"
